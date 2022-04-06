@@ -6,9 +6,13 @@ RM = rm -rf
 CC = cc
 
 PARSING = parse.c
+FREE = free_list.c
+GNL = get_next_line.c get_next_line_utils.c
 
 FILES = cube3d.c \
-		$(addprefix parsing/, $(PARSING))
+		$(addprefix parsing/, $(PARSING)) \
+		$(addprefix gnl/, $(GNL)) \
+		$(addprefix free_utils/, $(FREE))
 		
 SRCS = $(addprefix srcs/, $(FILES))
 
@@ -21,7 +25,7 @@ $(NAME): $(OBJS) $(LIBFT)
 	@echo "cube3D created"
 
 %.o:%.c $(INC)/cube3d.h
-	$(CC) $(CFLAGS) -c $< -o $@ -I $(INC)
+	@$(CC) $(CFLAGS) -c $< -o $@ -I $(INC)
 	@echo "compiling..."
 
 clean:
