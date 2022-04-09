@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 22:06:14 by akarafi           #+#    #+#             */
-/*   Updated: 2022/04/06 02:48:41 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/04/09 21:27:27 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@
 // error numbers:
 # define ALLOCATION_ERR 1U
 # define OPEN_FILE_ERR 2U
+# define MISSING_DATA_ERR 4U
+# define DUPLICATED_DATA_ERR 8U
+# define INVALID_DATA_ERR 16U
 // end error numbers
 
 // directions
@@ -31,7 +34,6 @@
 # define WE 3U
 # define EA 4U
 // end directions
-
 
 // parsing:
 typedef struct s_list
@@ -69,7 +71,16 @@ typedef struct s_data
 	t_position	palyer_position;
 }	t_data;
 
+typedef struct s_dir
+{
+	char	*north;
+	char	*south;
+	char	*west;
+	char	*east;
+}	t_dir;
+
 t_data	*get_data(char *filename, int *error);
+char	*get_texture(t_list *lst, int direction, int *error);
 
 // end parsing
 
