@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 21:51:13 by akarafi           #+#    #+#             */
-/*   Updated: 2022/04/09 21:46:27 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/04/10 05:22:34 by ayoub            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-static bool	strcmp(char *start, char *end, char *str)
+static bool	_strcmp(char *start, char *end, char *str)
 {
 	char	*it;
 
@@ -60,15 +60,15 @@ static int	get_identifier(char *line, char **ptr)
 	*ptr = end;
 	while (**ptr == ' ' && **ptr)
 		(*ptr)++;
-	if (strcmp(line, end, "F") || strcmp(line, end, "C"))
+	if (_strcmp(line, end, "F") || _strcmp(line, end, "C"))
 		return (0);
-	if (strcmp(line, end, "NO"))
+	if (_strcmp(line, end, "NO"))
 		return (NO);
-	if (strcmp(line, end, "SO"))
+	if (_strcmp(line, end, "SO"))
 		return (SO);
-	if (strcmp(line, end, "WE"))
+	if (_strcmp(line, end, "WE"))
 		return (WE);
-	if (strcmp(line, end, "EA"))
+	if (_strcmp(line, end, "EA"))
 		return (EA);
 	return (-1);
 }
