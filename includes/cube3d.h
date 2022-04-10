@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 22:06:14 by akarafi           #+#    #+#             */
-/*   Updated: 2022/04/09 21:27:27 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/04/10 05:46:30 by ayoub            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,14 @@
 # define INVALID_DATA_ERR 16U
 // end error numbers
 
-// directions
+// directions && ids
 # define NO 1U
 # define SO 2U
 # define WE 3U
 # define EA 4U
-// end directions
+# define F	5U
+# define C	6U
+// end directions && ids
 
 // parsing:
 typedef struct s_list
@@ -81,7 +83,7 @@ typedef struct s_dir
 
 t_data	*get_data(char *filename, int *error);
 char	*get_texture(t_list *lst, int direction, int *error);
-
+int		get_identifier(char *line, char **ptr);
 // end parsing
 
 #endif

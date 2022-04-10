@@ -5,7 +5,7 @@ MLX = -lmlx -framework OpenGL -framework AppKit
 RM = rm -rf
 CC = cc
 
-PARSING = parse.c textures.c
+PARSING = parse.c textures.c identify.c colors.c
 FREE = free_list.c
 GNL = get_next_line.c get_next_line_utils.c
 
