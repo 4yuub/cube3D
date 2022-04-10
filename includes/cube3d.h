@@ -6,7 +6,7 @@
 /*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 22:06:14 by akarafi           #+#    #+#             */
-/*   Updated: 2022/04/10 05:46:30 by ayoub            ###   ########.fr       */
+/*   Updated: 2022/04/10 17:27:42 by ayoub            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ typedef struct s_dir
 t_data	*get_data(char *filename, int *error);
 char	*get_texture(t_list *lst, int direction, int *error);
 int		get_identifier(char *line, char **ptr);
+void	get_colors(t_list *lst, t_data *data, int *error);
 // end parsing
 
 #endif

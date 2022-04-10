@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 22:18:13 by akarafi           #+#    #+#             */
-/*   Updated: 2022/04/08 23:54:37 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/04/10 05:50:58 by ayoub            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,6 @@ t_data	*get_data(char *filename, int *error)
 	data->south_texture = get_texture(lst, SO, error);
 	data->west_texture = get_texture(lst, WE, error);
 	data->east_texture = get_texture(lst, EA, error);
+	get_colors(lst, data, error);
 	return (free_list(lst), close(fd), data);
 }

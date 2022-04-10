@@ -2,7 +2,6 @@
         EA ./texture/rolling_stones.xpm
        NO  ./texture/rl_stones.xpm
        SO ./texture/yoda.xpm
-       SO ./texture/yoda.xpm
 
           F       115,115,115
          C 0,179,179
