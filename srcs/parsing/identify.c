@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   identify.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
+/*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 05:42:13 by ayoub             #+#    #+#             */
-/*   Updated: 2022/04/10 05:45:57 by ayoub            ###   ########.fr       */
+/*   Updated: 2022/04/10 21:58:45 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,7 @@ int	get_identifier(char *line, char **ptr)
 		return (WE);
 	if (_strcmp(line, end, "EA"))
 		return (EA);
+	if (_strcmp(line, end, ""))
+		return (0);
 	return (-1);
 }
