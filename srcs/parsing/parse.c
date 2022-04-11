@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
+/*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 22:18:13 by akarafi           #+#    #+#             */
-/*   Updated: 2022/04/10 05:50:58 by ayoub            ###   ########.fr       */
+/*   Updated: 2022/04/11 19:43:57 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,24 @@ t_list	*get_lst(int fd, int *error)
 	return (lst);
 }
 
+static void	init_data(t_data *data)
+{
+	data->ceil_color.r = -1;
+	data->ceil_color.g = -1;
+	data->ceil_color.b = -1;
+	data->floor_color.r = -1;
+	data->floor_color.g = -1;
+	data->floor_color.b = -1;
+	data->palyer_position.x = -1;
+	data->palyer_position.y = -1;
+	data->palyer_position.direction = 0;
+	data->north_texture = NULL;
+	data->south_texture = NULL;
+	data->west_texture = NULL;
+	data->east_texture = NULL;
+	data->map = NULL;
+}
+
 t_data	*get_data(char *filename, int *error)
 {
 	int		fd;
@@ -59,6 +77,7 @@ t_data	*get_data(char *filename, int *error)
 	data = malloc(sizeof(t_data));
 	if (!data)
 		return (*error = ALLOCATION_ERR, NULL);
+	init_data(data);
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
 		return (*error = OPEN_FILE_ERR, data);

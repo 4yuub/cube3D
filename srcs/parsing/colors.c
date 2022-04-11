@@ -6,21 +6,11 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 05:39:39 by ayoub             #+#    #+#             */
-/*   Updated: 2022/04/10 22:11:54 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/04/11 19:40:48 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
-
-static void	_init(t_data *data)
-{
-	data->floor_color.r = -1;
-	data->floor_color.g = -1;
-	data->floor_color.b = -1;
-	data->ceil_color.r = -1;
-	data->ceil_color.g = -1;
-	data->ceil_color.b = -1;
-}
 
 static void	get_color_of(char *value, t_color *c, int *error)
 {
@@ -55,7 +45,6 @@ void	get_colors(t_list *lst, t_data *data, int *error)
 	int		id;
 	char	*value;
 
-	_init(data);
 	while (lst && !*error)
 	{
 		id = get_identifier(lst->content, &value);

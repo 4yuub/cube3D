@@ -6,24 +6,18 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 22:10:32 by akarafi           #+#    #+#             */
-/*   Updated: 2022/04/11 18:36:48 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/04/11 19:38:55 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 #include "colors.h"
 
-void	checkleaks(void)
-{
-	system("leaks cube3D");
-}
-
 int	main(int ac, char **av)
 {	
 	int		error;
 	t_data	*data;
 
-	//atexit(checkleaks);
 	if (ac != 2)
 		return (printf("%sInvalid number of args%s\n", RED, RESET), 0);
 	error = 0;
