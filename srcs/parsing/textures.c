@@ -6,7 +6,7 @@
 /*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 21:51:13 by akarafi           #+#    #+#             */
-/*   Updated: 2022/04/10 05:47:08 by ayoub            ###   ########.fr       */
+/*   Updated: 2022/04/11 08:01:37 by ayoub            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,17 +46,16 @@ static void	check_and_get_data(t_list *lst, t_dir *directons, int *error)
 			*error = DUPLICATED_DATA_ERR;
 		if (id == -1 || *error)
 			break ;
-		value = duplicat(value);
 		if (!value)
 			*error = ALLOCATION_ERR;
 		else if (id == SO)
-			directons->south = value;
+			directons->south = duplicat(value);
 		else if (id == NO)
-			directons->north = value;
+			directons->north = duplicat(value);
 		else if (id == WE)
-			directons->west = value;
+			directons->west = duplicat(value);
 		else if (id == EA)
-			directons->east = value;
+			directons->east = duplicat(value);
 		lst = lst->next;
 	}
 }

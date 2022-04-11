@@ -1,12 +1,12 @@
 NAME = cube3D
 INC = includes
 CFLAGS = -Wall -Wextra -Werror
-MLX = -lmlx -framework OpenGL -framework AppKit
+#MLX = -lmlx -framework OpenGL -framework AppKit
 RM = rm -rf
 CC = cc
 
 PARSING = parse.c textures.c identify.c colors.c
-FREE = free_list.c
+FREE = free_list.c free_data.c
 GNL = get_next_line.c get_next_line_utils.c
 
 FILES = cube3d.c \

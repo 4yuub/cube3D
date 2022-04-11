@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
+/*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 22:06:14 by akarafi           #+#    #+#             */
-/*   Updated: 2022/04/10 17:27:42 by ayoub            ###   ########.fr       */
+/*   Updated: 2022/04/11 18:40:09 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUBE3D_H
 # define CUBE3D_H
 # include <stdio.h>
-# include <mlx.h>
+//# include <mlx.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
@@ -43,9 +43,6 @@ typedef struct s_list
 	char	*content;
 	void	*next;
 }	t_list;
-// free utils:
-void	free_list(t_list *lst);
-// end free utils
 
 typedef struct s_color
 {
@@ -80,6 +77,11 @@ typedef struct s_dir
 	char	*west;
 	char	*east;
 }	t_dir;
+
+// free utils:
+void	free_list(t_list *lst);
+void	free_data(t_data *data);
+// end free utils
 
 t_data	*get_data(char *filename, int *error);
 char	*get_texture(t_list *lst, int direction, int *error);

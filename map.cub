@@ -1,14 +1,11 @@
-               WE ./texture/masked.xpm
-        EA ./texture/rolling_stones.xpm
-       NO  ./texture/rl_stones.xpm
-          F       115,115,115
-       SO ./texture/yoda.xpm
+WE ./texture/masked.xpm
+EA ./texture/rolling_stones.xpm
+NO ./texture/rl_stones.xpm
+SO ./texture/yoda.xpm
 
 
-
-         C                   0,179,179
-
-
+F 115,115,115
+C 0,119,179
 
 
 
