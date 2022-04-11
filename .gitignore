@@ -6,3 +6,6 @@ cube3D
 
 # vscode settings
 .vscode
+
+# valgrind
+*.dSYM
