@@ -6,7 +6,7 @@
 /*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 21:51:13 by akarafi           #+#    #+#             */
-/*   Updated: 2022/04/11 08:01:37 by ayoub            ###   ########.fr       */
+/*   Updated: 2022/04/13 05:55:12 by ayoub            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,6 @@ char	*get_texture(t_list *lst, int direction, int *error)
 {
 	static t_dir	directions;
 
-	if (*error)
-		return (NULL);
 	if (direction == NO && directions.north)
 		return (directions.north);
 	if (direction == SO && directions.south)
@@ -74,6 +72,8 @@ char	*get_texture(t_list *lst, int direction, int *error)
 		return (directions.west);
 	if (direction == EA && directions.east)
 		return (directions.east);
+	if (*error)
+		return (NULL);
 	check_and_get_data(lst, &directions, error);
 	if (!*error && (!directions.north || !directions.south
 			|| !directions.west || !directions.east))
