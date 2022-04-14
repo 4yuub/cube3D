@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 05:39:39 by ayoub             #+#    #+#             */
-/*   Updated: 2022/04/11 19:40:48 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/04/14 05:10:36 by ayoub            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	get_color_of(char *value, t_color *c, int *error)
 	}
 }
 
-void	get_colors(t_list *lst, t_data *data, int *error)
+t_list	*get_colors(t_list *lst, t_data *data, int *error)
 {
 	int		id;
 	char	*value;
@@ -61,4 +61,5 @@ void	get_colors(t_list *lst, t_data *data, int *error)
 	}
 	if (!*error && (data->ceil_color.b == -1 || data->floor_color.b == -1))
 		*error = MISSING_DATA_ERR;
+	return (lst);
 }

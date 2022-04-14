@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 22:18:13 by akarafi           #+#    #+#             */
-/*   Updated: 2022/04/11 19:43:57 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/04/14 05:11:20 by ayoub            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ t_data	*get_data(char *filename, int *error)
 	int		fd;
 	t_data	*data;
 	t_list	*lst;
+	t_list	*first_line_in_map;
 
 	data = malloc(sizeof(t_data));
 	if (!data)
@@ -88,6 +89,7 @@ t_data	*get_data(char *filename, int *error)
 	data->south_texture = get_texture(lst, SO, error);
 	data->west_texture = get_texture(lst, WE, error);
 	data->east_texture = get_texture(lst, EA, error);
-	get_colors(lst, data, error);
+	first_line_in_map = get_colors(lst, data, error);
+	get_map(first_line_in_map, data, error);
 	return (free_list(lst), close(fd), data);
 }
