@@ -6,13 +6,13 @@
 /*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 21:51:13 by akarafi           #+#    #+#             */
-/*   Updated: 2022/04/13 05:55:12 by ayoub            ###   ########.fr       */
+/*   Updated: 2022/04/14 05:28:09 by ayoub            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-static char	*duplicat(char *str)
+static char	*duplicat(char *str, int *error)
 {
 	char	*tmp;
 	int		i;
@@ -22,7 +22,7 @@ static char	*duplicat(char *str)
 		i++;
 	tmp = malloc(i + 1);
 	if (!tmp)
-		return (NULL);
+		return (*error = ALLOCATION_ERR, NULL);
 	i = 0;
 	while (str[i] && str[i] != '\n')
 	{
@@ -49,13 +49,13 @@ static void	check_and_get_data(t_list *lst, t_dir *directons, int *error)
 		if (!value)
 			*error = ALLOCATION_ERR;
 		else if (id == SO)
-			directons->south = duplicat(value);
+			directons->south = duplicat(value, error);
 		else if (id == NO)
-			directons->north = duplicat(value);
+			directons->north = duplicat(value, error);
 		else if (id == WE)
-			directons->west = duplicat(value);
+			directons->west = duplicat(value, error);
 		else if (id == EA)
-			directons->east = duplicat(value);
+			directons->east = duplicat(value, error);
 		lst = lst->next;
 	}
 }
