@@ -6,7 +6,7 @@
 /*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 22:06:14 by akarafi           #+#    #+#             */
-/*   Updated: 2022/04/14 05:10:47 by ayoub            ###   ########.fr       */
+/*   Updated: 2022/04/15 04:26:17 by ayoub            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,12 @@
 # define C	6U
 // end directions && ids
 
+// map objs
+# define WALL  1U
+# define SPACE 2U
+# define EMPTY 3U
+// end map objs
+
 // parsing:
 typedef struct s_list
 {
@@ -61,6 +67,8 @@ typedef struct s_position
 typedef struct s_data
 {
 	int8_t		**map;
+	int			width;
+	int			height;
 	char		*north_texture;
 	char		*south_texture;
 	char		*west_texture;
