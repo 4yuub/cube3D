@@ -6,7 +6,7 @@
 /*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 01:27:11 by ayoub             #+#    #+#             */
-/*   Updated: 2022/04/15 04:32:33 by ayoub            ###   ########.fr       */
+/*   Updated: 2022/04/15 05:34:20 by ayoub            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,53 @@ static void	init_columns(t_data *data, int *error)
 	}
 }
 
-void	get_map(t_list *lst, t_data *data, int *error)
+void	fill_map(t_data *data, t_list *lst)
 {
 	int	i;
+	int	j;
+
+	i = -1;
+	while (++i < data->height && lst)
+	{
+		j = 0;
+		while (lst->content[j] != '\n' && lst->content[j])
+		{
+			if (lst->content[j] == '1')
+				data->map[i][j] =  WALL;
+			else if (lst->content[j] == '0')
+				data->map[i][j] = EMPTY;
+			else if (lst->content[j] == ' ')
+				;
+			else
+				data->map[i][j] = lst->content[j];
+			j++;
+		}
+		lst = lst->next;
+	}
+}
+
+char get(int n)
+{
+	if (n == SPACE)
+		return ' ';
+	if (n == WALL)
+		return '#';
+	if (n == EMPTY)
+		return '.';
+	return n;
+}
+
+void	get_map(t_list *lst, t_data *data, int *error)
+{
+	int		i;
+	t_list	*head;
 
 	data->height = 0;
 	data->width = 0;
 	if (*error)
 		return ;
-	while (lst && ++data->height)
+	head = lst;
+	while (lst && ++(data->height))
 	{
 		i = 0;
 		while (lst->content[i] && lst->content[i] != '\n')
@@ -55,6 +93,12 @@ void	get_map(t_list *lst, t_data *data, int *error)
 	if (!data->map)
 		*error = ALLOCATION_ERR;
 	init_columns(data, error);
-	//fill_map(data->map, lst, error);
+	fill_map(data, head);
+	for (int i = 0; i < data->height; i++)
+	{
+		for (int j = 0; j < data->width; j++)
+			printf("%c", get(data->map[i][j]));
+		printf("\n");
+	}
 	//validate_map(data->map, error);
 }

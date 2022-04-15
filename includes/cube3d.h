@@ -6,7 +6,7 @@
 /*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 22:06:14 by akarafi           #+#    #+#             */
-/*   Updated: 2022/04/15 04:26:17 by ayoub            ###   ########.fr       */
+/*   Updated: 2022/04/15 05:24:59 by ayoub            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@
 // end directions && ids
 
 // map objs
+# define EMPTY 0U
 # define WALL  1U
 # define SPACE 2U
-# define EMPTY 3U
 // end map objs
 
 // parsing:
