@@ -6,7 +6,7 @@
 /*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 22:06:14 by akarafi           #+#    #+#             */
-/*   Updated: 2022/04/15 05:24:59 by ayoub            ###   ########.fr       */
+/*   Updated: 2022/04/15 06:32:55 by ayoub            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define MISSING_DATA_ERR 4U
 # define DUPLICATED_DATA_ERR 8U
 # define INVALID_DATA_ERR 16U
+# define INVALID_MAP_ERR 32U
 // end error numbers
 
 // directions && ids
@@ -96,6 +97,7 @@ char	*get_texture(t_list *lst, int direction, int *error);
 int		get_identifier(char *line, char **ptr);
 t_list	*get_colors(t_list *lst, t_data *data, int *error);
 void	get_map(t_list *lst, t_data *data, int *error);
+void	validate_map(t_data *data, int *error);
 // end parsing
 
 #endif

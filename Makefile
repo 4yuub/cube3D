@@ -5,7 +5,7 @@ CFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
 CC = cc
 
-PARSING = parse.c textures.c identify.c colors.c map.c
+PARSING = parse.c textures.c identify.c colors.c map.c map_validation.c
 FREE = free_list.c free_data.c
 GNL = get_next_line.c get_next_line_utils.c
 

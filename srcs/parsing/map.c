@@ -6,7 +6,7 @@
 /*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 01:27:11 by ayoub             #+#    #+#             */
-/*   Updated: 2022/04/15 05:34:20 by ayoub            ###   ########.fr       */
+/*   Updated: 2022/04/15 06:32:18 by ayoub            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	init_columns(t_data *data, int *error)
 	}
 }
 
-void	fill_map(t_data *data, t_list *lst)
+static void	fill_map(t_data *data, t_list *lst)
 {
 	int	i;
 	int	j;
@@ -94,11 +94,7 @@ void	get_map(t_list *lst, t_data *data, int *error)
 		*error = ALLOCATION_ERR;
 	init_columns(data, error);
 	fill_map(data, head);
-	for (int i = 0; i < data->height; i++)
-	{
-		for (int j = 0; j < data->width; j++)
-			printf("%c", get(data->map[i][j]));
-		printf("\n");
-	}
-	//validate_map(data->map, error);
+	validate_map(data, error);
+	// print map
+	for (int i = 0; i < data->height; i++){for (int j = 0; j < data->width; j++)printf("%c", get(data->map[i][j]));printf("\n");}
 }
