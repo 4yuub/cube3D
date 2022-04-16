@@ -6,82 +6,74 @@
 /*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 06:31:49 by ayoub             #+#    #+#             */
-/*   Updated: 2022/04/16 06:07:54 by ayoub            ###   ########.fr       */
+/*   Updated: 2022/04/16 08:51:48 by ayoub            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-// first_line and last line only contains walls or spaces
-bool	only_walls(t_data *data)
-{
-	bool	first_line;
-	bool	last_line;
-	int8_t	*line;
-	int8_t	*line2;
-	int		i;
+bool	surrounded_by_walls(t_data *data);
+bool	only_walls(t_data *data);
+bool	first_and_last(t_data *data);
 
-	first_line = false;
-	last_line = false;
-	line = data->map[0];
-	line2 = data->map[data->height - 1];
-	i = -1;
-	while (++i < data->width)
-	{
-		if ((line[i] != SPACE && line[i] != WALL)
-			|| (line2[i] != SPACE && line2[i] != WALL))
-			return (false);
-		if (line[i] == WALL)
-			first_line = true;
-		if (line2[i] == WALL)
-			last_line = true;
-	}
-	return (first_line && last_line);
+static bool	is_valid_member(int8_t c)
+{
+	return (c == SPACE || c == WALL || c == EMPTY
+		|| c == 'N' || c == 'S' || c == 'E' || c == 'W');
 }
 
-// first and last should be one or space in each line
-bool	first_and_last(t_data *data)
+static bool	is_player(int8_t c)
 {
-	int		i;
-	int		j;
-
-	i = -1;
-	j = data->width - 1;
-	while (++i < data->height)
-		if ((data->map[i][0] != SPACE && data->map[i][0] != WALL)
-			|| ((data->map[i][j] != SPACE && data->map[i][j] != WALL)))
-			return (false);
-	return (true);
+	return (c == 'N' || c == 'S' || c == 'E' || c == 'W');
 }
 
-static bool	space_wall(int8_t c)
+static void	set_player_details(t_data *data, int y, int x)
 {
-	return (c == SPACE || c == WALL);
+	int	dir;
+
+	data->palyer_position.x = x;
+	data->palyer_position.y = y;
+	dir = WE;
+	if (data->map[y][x] == 'N')
+		dir = NO;
+	else if (data->map[y][x] == 'S')
+		dir = SO;
+	else if (data->map[y][x] == 'E')
+		dir = EA;
+	data->palyer_position.direction = dir;
+	data->map[y][x] = EMPTY;
 }
 
-bool	surrounded_by_walls(t_data *data)
+/** find player position
+*   in addition to check if there is in valid members in map
+*/
+static void	get_player_position(t_data *data, int *error)
 {
 	int	i;
 	int	j;
+	int	count;
 
 	i = -1;
+	count = 0;
 	while (++i < data->height)
 	{
 		j = -1;
-		while (++j < data->width)
+		while (++j < data->height)
 		{
-			if ((data->map[i][j] == SPACE)
-				&& ((i - 1 >= 0 && !space_wall(data->map[i - 1][j]))
-					|| (i + 1 < data->height
-						&& !space_wall(data->map[i + 1][j]))
-					|| (j - 1 >= 0 && !space_wall(data->map[i][j - 1]))
-					|| (j + 1 < data->width
-						&& !space_wall(data->map[i][j + 1]))
-				))
-				return (false);
+			if (!is_valid_member(data->map[i][j]))
+			{
+				*error = INVALID_MAP_ERR;
+				return ;
+			}
+			if (is_player(data->map[i][j]))
+			{
+				set_player_details(data, i, j);
+				count++;
+			}
 		}
 	}
-	return (true);
+	if (count != 1)
+		*error = INVALID_MAP_ERR;
 }
 
 void	validate_map(t_data *data, int *error)
@@ -92,5 +84,5 @@ void	validate_map(t_data *data, int *error)
 		|| !first_and_last(data)
 		|| !surrounded_by_walls(data))
 		*error = INVALID_MAP_ERR;
-	// todo: check palyer
+	get_player_position(data, error);
 }
