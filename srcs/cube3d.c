@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 22:10:32 by akarafi           #+#    #+#             */
-/*   Updated: 2022/04/17 17:27:54 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/04/17 17:32:59 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ const char	*str_error(int error)
 	if (error == INVALID_DATA_ERR)
 		return ("Invalide data");
 	if (error == INVALID_MAP_ERR)
-		return ("Invalde map");
+		return ("Invalide map");
 	if (error == FILE_EXTENTION_ERR)
 		return ("Invalde file extention");
 	return ("Undefined error");
@@ -57,8 +57,8 @@ int	main(int ac, char **av)
 	if (error)
 	{
 		printf("An error have been occured: %s\n", str_error(error));
-		free_data(data);
+		//free_data(data);
 		return (0);
 	}
-	free_data(data);
+	//free_data(data);
 }
