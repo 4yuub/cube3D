@@ -6,12 +6,27 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 22:10:32 by akarafi           #+#    #+#             */
-/*   Updated: 2022/04/11 19:38:55 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/04/17 16:46:42 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 #include "colors.h"
+
+const char	*str_error(int error)
+{
+	if (error == ALLOCATION_ERR)
+		return ("Allocation failed");
+	if (error == OPEN_FILE_ERR)
+		return ("Can't open file");
+	if (error == MISSING_DATA_ERR)
+		return ("Data isn't completed");
+	if (error == INVALID_DATA_ERR)
+		return ("Invalide data");
+	if (INVALID_MAP_ERR)
+		return ("Invalde map");
+	return ("Undefined error");
+}
 
 int	main(int ac, char **av)
 {	
@@ -24,8 +39,7 @@ int	main(int ac, char **av)
 	data = get_data(av[1], &error);
 	if (error)
 	{
-		// todo...
-		printf("An error have been occured %d\n", error);
+		printf("An error have been occured: %s\n", str_error(error));
 		free_data(data);
 		return (0);
 	}
