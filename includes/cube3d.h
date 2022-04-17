@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
+/*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 22:06:14 by akarafi           #+#    #+#             */
-/*   Updated: 2022/04/15 06:32:55 by ayoub            ###   ########.fr       */
+/*   Updated: 2022/04/17 17:00:23 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,13 @@
 # include <stdbool.h>
 
 // error numbers:
-# define ALLOCATION_ERR 1U
-# define OPEN_FILE_ERR 2U
-# define MISSING_DATA_ERR 4U
+# define ALLOCATION_ERR      1U
+# define OPEN_FILE_ERR       2U
+# define MISSING_DATA_ERR    4U
 # define DUPLICATED_DATA_ERR 8U
-# define INVALID_DATA_ERR 16U
-# define INVALID_MAP_ERR 32U
+# define INVALID_DATA_ERR    16U
+# define INVALID_MAP_ERR     32U
+# define FILE_EXTENTION_ERR  64U
 // end error numbers
 
 // directions && ids
@@ -98,6 +99,7 @@ int		get_identifier(char *line, char **ptr);
 t_list	*get_colors(t_list *lst, t_data *data, int *error);
 void	get_map(t_list *lst, t_data *data, int *error);
 void	validate_map(t_data *data, int *error);
+bool	_strcmp(char *start, char *end, char *str);
 // end parsing
 
 #endif

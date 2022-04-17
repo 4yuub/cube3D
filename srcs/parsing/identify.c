@@ -6,13 +6,13 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 05:42:13 by ayoub             #+#    #+#             */
-/*   Updated: 2022/04/10 21:58:45 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/04/17 17:00:15 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-static bool	_strcmp(char *start, char *end, char *str)
+bool	_strcmp(char *start, char *end, char *str)
 {
 	char	*it;
 
