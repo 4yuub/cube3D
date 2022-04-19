@@ -6,7 +6,7 @@
 /*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/07 21:51:13 by akarafi           #+#    #+#             */
-/*   Updated: 2022/04/14 05:28:09 by ayoub            ###   ########.fr       */
+/*   Updated: 2022/04/19 07:31:20 by ayoub            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ static void	check_and_get_data(t_list *lst, t_dir *directons, int *error)
 			*error = DUPLICATED_DATA_ERR;
 		if (id == -1 || *error)
 			break ;
-		if (!value)
-			*error = ALLOCATION_ERR;
+		if (id != 0 && (!*value || *value == '\n'))
+			*error = INVALID_DATA_ERR;
 		else if (id == SO)
 			directons->south = duplicat(value, error);
 		else if (id == NO)

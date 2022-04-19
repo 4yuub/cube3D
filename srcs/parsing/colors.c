@@ -6,7 +6,7 @@
 /*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 05:39:39 by ayoub             #+#    #+#             */
-/*   Updated: 2022/04/14 05:10:36 by ayoub            ###   ########.fr       */
+/*   Updated: 2022/04/19 07:26:45 by ayoub            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ static void	get_color_of(char *value, t_color *c, int *error)
 	{
 		if (*value == ',' || *value == '\n')
 		{
-			if (c->r == -1 && n <= 255)
+			if (n == 0 && *(value - 1) != '0')
+				*error = INVALID_DATA_ERR;
+			else if (c->r == -1 && n <= 255)
 				c->r = n;
 			else if (c->g == -1 && n <= 255)
 				c->g = n;
