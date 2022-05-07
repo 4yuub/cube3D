@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
+/*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 05:39:39 by ayoub             #+#    #+#             */
-/*   Updated: 2022/04/19 07:26:45 by ayoub            ###   ########.fr       */
+/*   Updated: 2022/05/07 16:48:05 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ static void	get_color_of(char *value, t_color *c, int *error)
 	int		n;
 
 	n = 0;
-	while (!*error && *value)
+	--value;
+	while (!*error && *(++value))
 	{
 		if (*value == ',' || *value == '\n')
 		{
@@ -31,14 +32,12 @@ static void	get_color_of(char *value, t_color *c, int *error)
 				c->b = n;
 			else
 				*error = INVALID_DATA_ERR;
-			value++;
 			n = 0;
 			continue ;
 		}
 		if (*value < '0' || *value > '9')
 			*error = INVALID_DATA_ERR;
 		n = (n * 10) + (*value - '0');
-		value++;
 	}
 }
 

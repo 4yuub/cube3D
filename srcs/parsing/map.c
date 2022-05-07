@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 01:27:11 by ayoub             #+#    #+#             */
-/*   Updated: 2022/04/17 16:47:35 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/05/07 16:46:35 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	fill_map(t_data *data, t_list *lst)
 		while (lst->content[j] != '\n' && lst->content[j])
 		{
 			if (lst->content[j] == '1')
-				data->map[i][j] =  WALL;
+				data->map[i][j] = WALL;
 			else if (lst->content[j] == '0')
 				data->map[i][j] = EMPTY;
 			else if (lst->content[j] == ' ')
