@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_validation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
+/*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 06:31:49 by ayoub             #+#    #+#             */
-/*   Updated: 2022/04/16 08:51:48 by ayoub            ###   ########.fr       */
+/*   Updated: 2022/05/16 01:43:48 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static void	get_player_position(t_data *data, int *error)
 	while (++i < data->height)
 	{
 		j = -1;
-		while (++j < data->height)
+		while (++j < data->width)
 		{
 			if (!is_valid_member(data->map[i][j]))
 			{
