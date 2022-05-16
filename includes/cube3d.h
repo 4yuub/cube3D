@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 22:06:14 by akarafi           #+#    #+#             */
-/*   Updated: 2022/05/16 00:47:42 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/05/16 19:01:01 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,15 +109,28 @@ bool	_strcmp(char *start, char *end, char *str);
 
 typedef struct s_vector
 {
-	float	x;
-	float	y;
+	double	x;
+	double	y;
 }	t_vector;
+
+typedef struct s_vector_i
+{
+	int	x;
+	int	y;
+}	t_vector_i;
 
 typedef struct s_utils
 {
 	t_vector	pos;
 	t_vector	dir;
 	t_vector	camera_plane;
+	t_vector	ray_dir;
+	t_vector_i	step;
+	t_vector_i	map;
+	t_vector	dist;
+	t_vector	new_dist;
+	bool		hit;
+	int			side;
 	t_data		*data;
 	void		*mlx_ptr;
 	void		*mlx_win;
@@ -126,6 +139,8 @@ typedef struct s_utils
 void	render(t_data *data);
 int		event_listener(int key, t_utils *utils);
 int		raycaster(t_utils *utils);
+void	dda_algorithm(t_utils *utils);
+
 // end rendring
 
 // key macros
