@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 00:46:06 by akarafi           #+#    #+#             */
-/*   Updated: 2022/05/16 21:36:42 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/05/16 22:55:17 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,16 +65,15 @@ static void	draw_in_screen(t_utils *utils, int x)
 	int	start;
 	int	end;
 
-	line_height = (utils->dist.y - utils->new_dist.y) / HEIGHT;
+	line_height = HEIGHT / (utils->dist.y - utils->new_dist.y);
 	if (utils->side == 0)
-		line_height = (utils->dist.x - utils->new_dist.x) / HEIGHT;
+		line_height = HEIGHT / (utils->dist.x - utils->new_dist.x);
 	start = -line_height / 2 + HEIGHT / 2;
 	if (start < 0)
 		start = 0;
 	end = line_height / 2 + HEIGHT / 2;
 	if (end >= HEIGHT)
 		end = HEIGHT - 1;
-	printf("%d %d\n", start, end);
 	get_color(utils);
 	draw_vertical_line(utils, start, end, x);
 }
