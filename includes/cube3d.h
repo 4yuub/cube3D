@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 22:06:14 by akarafi           #+#    #+#             */
-/*   Updated: 2022/05/16 19:01:01 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/05/16 21:25:55 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,7 @@ typedef struct s_utils
 	t_vector	new_dist;
 	bool		hit;
 	int			side;
+	int			color;
 	t_data		*data;
 	void		*mlx_ptr;
 	void		*mlx_win;

@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 00:46:06 by akarafi           #+#    #+#             */
-/*   Updated: 2022/05/16 19:06:22 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/05/16 21:36:42 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,49 @@ static void	calc_distance_to_next_wall(t_utils *utils)
 	dda_algorithm(utils);
 }
 
+static void	draw_vertical_line(t_utils *utils, int start, int end, int x)
+{
+	int	i;
+
+	i = start - 1;
+	while (++i < end)
+		mlx_pixel_put(utils->mlx_ptr, utils->mlx_win, x, i, utils->color);
+}
+
+static void	get_color(t_utils *utils)
+{
+	if (utils->side)
+	{
+		// y (EA, WE)
+		utils->color = 0xff0000;
+	}
+	else
+	{
+		// x (NO, SO)
+		utils->color = 0x0000ff;
+	}
+}
+
+static void	draw_in_screen(t_utils *utils, int x)
+{
+	int	line_height;
+	int	start;
+	int	end;
+
+	line_height = (utils->dist.y - utils->new_dist.y) / HEIGHT;
+	if (utils->side == 0)
+		line_height = (utils->dist.x - utils->new_dist.x) / HEIGHT;
+	start = -line_height / 2 + HEIGHT / 2;
+	if (start < 0)
+		start = 0;
+	end = line_height / 2 + HEIGHT / 2;
+	if (end >= HEIGHT)
+		end = HEIGHT - 1;
+	printf("%d %d\n", start, end);
+	get_color(utils);
+	draw_vertical_line(utils, start, end, x);
+}
+
 int	raycaster(t_utils *utils)
 {
 	int		x;
@@ -50,7 +93,7 @@ int	raycaster(t_utils *utils)
 		utils->ray_dir.x = utils->dir.x + utils->camera_plane.x * (a * x + b);
 		utils->ray_dir.y = utils->dir.y + utils->camera_plane.y * (a * x + b);
 		calc_distance_to_next_wall(utils);
-		//draw_in_screen(utils);
+		draw_in_screen(utils, x);
 	}
 	return (0);
 }
