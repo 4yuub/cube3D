@@ -1,7 +1,7 @@
 NAME = cube3D
 INC = includes
 CFLAGS = -Wall -Wextra -Werror
-MLX = -lmlx -framework OpenGL -framework AppKit
+MLX = -lmlx -framework OpenGL -framework AppKit -Ofast -march=native -ffast-math
 RM = rm -rf
 CC = cc
 
