@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 00:35:20 by akarafi           #+#    #+#             */
-/*   Updated: 2022/05/16 23:06:06 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/05/16 23:59:31 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,10 @@ int	__exit(t_data *data)
 	return (0);
 }
 
-void	rotate(t_utils *utils, double angel)
+static void	rotate(t_utils *utils, double angel)
 {
 	double	x_prime;
 	double	y_prime;
-
 
 	mlx_clear_window(utils->mlx_ptr, utils->mlx_win);
 	x_prime = utils->dir.x * cos(angel) - utils->dir.y * sin(angel);
@@ -38,6 +37,28 @@ void	rotate(t_utils *utils, double angel)
 	utils->camera_plane.y = y_prime;
 }
 
+static void	move_up(t_utils *utils)
+{
+	mlx_clear_window(utils->mlx_ptr, utils->mlx_win);
+	if (utils->data->map[(int)(utils->pos.x + \
+			utils->dir.x * .15)][(int) utils->pos.y] == EMPTY)
+		utils->pos.x += utils->dir.x * .15;
+	if (utils->data->map[(int)utils->pos.x][(int)(utils->pos.y + \
+			utils->dir.y * .15)] == EMPTY)
+		utils->pos.y += utils->dir.y * .15;
+}
+
+static void	move_down(t_utils *utils)
+{
+	mlx_clear_window(utils->mlx_ptr, utils->mlx_win);
+	if (utils->data->map[(int)(utils->pos.x - \
+			utils->dir.x * .15)][(int) utils->pos.y] == EMPTY)
+		utils->pos.x -= utils->dir.x * .15;
+	if (utils->data->map[(int) utils->pos.x][(int)(utils->pos.y - \
+			utils->dir.y * .15)] == EMPTY)
+		utils->pos.y -= utils->dir.y * .15;
+}
+
 int	event_listener(int key, t_utils *utils)
 {
 	if (key == KEY_ESC)
@@ -47,24 +68,8 @@ int	event_listener(int key, t_utils *utils)
 	else if (key == KEY_AR_R || key == KEY_D)
 		rotate(utils, 0.15);
 	if (key == KEY_AR_U || key == KEY_W)
-	{
-		mlx_clear_window(utils->mlx_ptr, utils->mlx_win);
-		if (utils->data->map[(int)(utils->pos.x + \
-				utils->dir.x * .15)][(int) utils->pos.y] == EMPTY)
-			utils->pos.x += utils->dir.x * .15;
-		if (utils->data->map[(int)utils->pos.x][(int)(utils->pos.y + \
-				utils->dir.y * .15)] == EMPTY)
-			utils->pos.y += utils->dir.y * .15;
-	}
+		move_up(utils);
 	if (key == KEY_AR_D || key == KEY_S)
-	{
-		mlx_clear_window(utils->mlx_ptr, utils->mlx_win);
-		if (utils->data->map[(int)(utils->pos.x - \
-				utils->dir.x * .15)][(int) utils->pos.y] == EMPTY)
-			utils->pos.x -= utils->dir.x * .15;
-		if (utils->data->map[(int) utils->pos.x][(int)(utils->pos.y - \
-				utils->dir.y * .15)] == EMPTY)
-			utils->pos.y -= utils->dir.y * .15;
-	}
+		move_down(utils);
 	return (0);
 }
