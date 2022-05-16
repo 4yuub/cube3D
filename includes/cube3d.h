@@ -6,14 +6,14 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 22:06:14 by akarafi           #+#    #+#             */
-/*   Updated: 2022/04/17 17:00:23 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/05/16 00:47:42 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUBE3D_H
 # define CUBE3D_H
 # include <stdio.h>
-//# include <mlx.h>
+# include <mlx.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
@@ -101,5 +101,45 @@ void	get_map(t_list *lst, t_data *data, int *error);
 void	validate_map(t_data *data, int *error);
 bool	_strcmp(char *start, char *end, char *str);
 // end parsing
+
+// rendring
+# define PI 3.141592f
+# define WIDTH 640
+# define HEIGHT 480
+
+typedef struct s_vector
+{
+	float	x;
+	float	y;
+}	t_vector;
+
+typedef struct s_utils
+{
+	t_vector	pos;
+	t_vector	dir;
+	t_vector	camera_plane;
+	t_data		*data;
+	void		*mlx_ptr;
+	void		*mlx_win;
+}	t_utils;
+
+void	render(t_data *data);
+int		event_listener(int key, t_utils *utils);
+int		raycaster(t_utils *utils);
+// end rendring
+
+// key macros
+# define KEY_A 0
+# define KEY_D 2
+# define KEY_S 1
+# define KEY_W 13
+
+# define KEY_AR_L 123
+# define KEY_AR_R 124
+# define KEY_AR_U 126
+# define KEY_AR_D 125
+
+# define KEY_ESC 53
+// end key macros
 
 #endif

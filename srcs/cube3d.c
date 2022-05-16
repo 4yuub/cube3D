@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 22:10:32 by akarafi           #+#    #+#             */
-/*   Updated: 2022/05/07 16:41:47 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/05/16 00:17:30 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,6 @@ int	main(int ac, char **av)
 		free_data(data);
 		return (0);
 	}
+	render(data);
 	free_data(data);
 }

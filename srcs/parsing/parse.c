@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 22:18:13 by akarafi           #+#    #+#             */
-/*   Updated: 2022/05/16 01:59:27 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/05/16 15:01:57 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,6 @@ t_data	*get_data(char *filename, int *error)
 	lst = get_lst(fd, error);
 	if (!lst || *error)
 		return (free_list(lst), close(fd), data);
-	puts("hello\n");
-	printf("%s\n", lst->content);
 	data->north_texture = get_texture(lst, NO, error);
 	data->south_texture = get_texture(lst, SO, error);
 	data->west_texture = get_texture(lst, WE, error);
