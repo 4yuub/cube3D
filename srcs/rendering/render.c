@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 00:13:35 by akarafi           #+#    #+#             */
-/*   Updated: 2022/05/17 02:21:13 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/05/17 17:45:27 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ static void	init_utils(t_utils *utils)
 
 	utils->mlx_ptr = mlx_init();
 	utils->mlx_win = mlx_new_window(utils->mlx_ptr, WIDTH, HEIGHT, "Cub3D");
-	utils->pos.x = utils->data->palyer_position.x;
-	utils->pos.y = utils->data->palyer_position.y;
+	utils->pos.x = utils->data->palyer_position.x + .0001;
+	utils->pos.y = utils->data->palyer_position.y + .0001;
 	dir = utils->data->palyer_position.direction;
 	utils->dir.x = -1;
 	if (dir == NO || dir == SO)
@@ -33,10 +33,10 @@ static void	init_utils(t_utils *utils)
 		utils->dir.y = 0;
 	else if (dir == NO)
 		utils->dir.y = 1;
-	utils->camera_plane.x = utils->dir.x * cos(-PI / 2) + \
-								utils->dir.y * sin(-PI / 2);// * (1 / tan(PI / 3));
-	utils->camera_plane.y = utils->dir.x * -sin(-PI / 2) + \
-								utils->dir.y * cos(-PI / 2);// * (1 / tan(PI / 3));
+	utils->camera_plane.x = (utils->dir.x * cos(-PI / 2) + \
+							utils->dir.y * sin(-PI / 2)) * (1 / tan(PI / 3));
+	utils->camera_plane.y = (utils->dir.x * -sin(-PI / 2) + \
+							utils->dir.y * cos(-PI / 2)) * (1 / tan(PI / 3));
 }
 
 void	render(t_data *data)
