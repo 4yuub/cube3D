@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 18:17:08 by akarafi           #+#    #+#             */
-/*   Updated: 2022/05/17 00:39:40 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/05/17 18:08:10 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	dda_algorithm(t_utils *utils)
 {
-	while (!utils->hit)
+	while (utils->data->map[utils->map.y][utils->map.x] != WALL)
 	{
 		if (utils->dist.x < utils->dist.y)
 		{
@@ -28,7 +28,5 @@ void	dda_algorithm(t_utils *utils)
 			utils->map.y += utils->step.y;
 			utils->side = 1;
 		}
-		if (utils->data->map[utils->map.y][utils->map.x] == WALL)
-			utils->hit = true;
 	}
 }

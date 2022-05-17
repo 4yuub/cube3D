@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 00:46:06 by akarafi           #+#    #+#             */
-/*   Updated: 2022/05/17 02:12:19 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/05/17 18:12:04 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ static void	calc_distance_to_next_wall(t_utils *utils)
 	utils->map.y = (int) utils->pos.y;
 	utils->dist.x = (utils->map.x + 1 - utils->pos.x) * utils->new_dist.x;
 	utils->dist.y = (utils->map.y + 1 - utils->pos.y) * utils->new_dist.y;
-	utils->hit = false;
 	utils->step.x = 1;
 	utils->step.y = 1;
 	if (utils->ray_dir.x < 0)

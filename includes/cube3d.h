@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 22:06:14 by akarafi           #+#    #+#             */
-/*   Updated: 2022/05/17 01:04:50 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/05/17 18:07:48 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,6 @@ typedef struct s_utils
 	t_vector_i	map;
 	t_vector	dist;
 	t_vector	new_dist;
-	bool		hit;
 	int			side;
 	int			color;
 	t_data		*data;
