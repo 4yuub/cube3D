@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 00:46:06 by akarafi           #+#    #+#             */
-/*   Updated: 2022/05/17 00:48:55 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/05/17 02:12:19 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,15 @@ static void	get_color(t_utils *utils)
 {
 	if (utils->side)
 	{
-		// y (EA, WE)
-		utils->color = 0xff0000;
+		utils->color = 0xff0000; // NO
+		if (utils->step.y == -1)
+			utils->color = 0x00ff00; // SO
 	}
 	else
 	{
-		// x (NO, SO)
-		utils->color = 0x0000ff;
+		utils->color = 0x0000ff; // EA
+		if (utils->step.x == -1)
+			utils->color = 0xffff00; // WE
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 00:13:35 by akarafi           #+#    #+#             */
-/*   Updated: 2022/05/17 00:58:04 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/05/17 02:21:13 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,17 @@ static void	init_utils(t_utils *utils)
 	utils->dir.x = -1;
 	if (dir == NO || dir == SO)
 		utils->dir.x = 0;
-	else if (dir == EA)
+	else if (dir == WE)
 		utils->dir.x = 1;
 	utils->dir.y = -1;
 	if (dir == EA || dir == WE)
 		utils->dir.y = 0;
 	else if (dir == NO)
 		utils->dir.y = 1;
-	utils->camera_plane.x = utils->dir.y * (1 / tan(PI / 3));
-	utils->camera_plane.y = utils->dir.x * (1 / tan(PI / 3));
+	utils->camera_plane.x = utils->dir.x * cos(-PI / 2) + \
+								utils->dir.y * sin(-PI / 2);// * (1 / tan(PI / 3));
+	utils->camera_plane.y = utils->dir.x * -sin(-PI / 2) + \
+								utils->dir.y * cos(-PI / 2);// * (1 / tan(PI / 3));
 }
 
 void	render(t_data *data)

@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 00:35:20 by akarafi           #+#    #+#             */
-/*   Updated: 2022/05/17 00:54:24 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/05/17 02:15:53 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ static void	rotate(t_utils *utils, double angel)
 	double	x_prime;
 	double	y_prime;
 
-	x_prime = utils->dir.x * cos(angel) - utils->dir.y * sin(angel);
-	y_prime = utils->dir.x * sin(angel) + utils->dir.y * cos(angel);
+	x_prime = utils->dir.x * cos(angel) + utils->dir.y * sin(angel);
+	y_prime = utils->dir.x * -sin(angel) + utils->dir.y * cos(angel);
 	utils->dir.x = x_prime;
 	utils->dir.y = y_prime;
-	x_prime = utils->camera_plane.x * cos(angel) - \
+	x_prime = utils->camera_plane.x * cos(angel) + \
 										utils->camera_plane.y * sin(angel);
-	y_prime = utils->camera_plane.x * sin(angel) + \
+	y_prime = utils->camera_plane.x * -sin(angel) + \
 										utils->camera_plane.y * cos(angel);
 	utils->camera_plane.x = x_prime;
 	utils->camera_plane.y = y_prime;
