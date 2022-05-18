@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 22:06:14 by akarafi           #+#    #+#             */
-/*   Updated: 2022/05/18 01:20:25 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/05/18 03:55:09 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,7 +141,8 @@ typedef struct s_utils
 	void		*south_texture;
 	void		*west_texture;
 	void		*east_texture;
-	int			screen_buffer[HEIGHT][WIDTH];
+	void		*img;
+	int			*img_data;
 }	t_utils;
 
 void	render(t_data *data);

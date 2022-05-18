@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 00:57:49 by akarafi           #+#    #+#             */
-/*   Updated: 2022/05/18 01:04:37 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/05/18 03:55:30 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,6 @@ void	load_textures(t_utils *utils)
 		free_data(utils->data);
 		exit(0);
 	}
+	utils->img = mlx_new_image(utils->mlx_ptr, WIDTH, HEIGHT);
+	utils->img_data = (int *)mlx_get_data_addr(utils->img, &x, &x, &x);
 }

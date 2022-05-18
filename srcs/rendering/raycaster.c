@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 00:46:06 by akarafi           #+#    #+#             */
-/*   Updated: 2022/05/17 18:12:04 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/05/18 04:00:53 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,13 @@ static void	draw_vertical_line(t_utils *utils, int start, int end, int x)
 {
 	int	i;
 
-	i = start - 1;
-	while (++i <= end)
-		mlx_pixel_put(utils->mlx_ptr, utils->mlx_win, x, i, utils->color);
+	i = -1;
+	while (++i <= start)
+		utils->img_data[WIDTH * i + x] = 0x0f0f0f;
+	while (i < end)
+		utils->img_data[WIDTH * i++ + x] = utils->color;
+	while (i < HEIGHT)
+		utils->img_data[WIDTH * i++ + x] = 0xe3e3e3;
 }
 
 static void	get_color(t_utils *utils)
@@ -88,7 +92,6 @@ int	raycaster(t_utils *utils)
 	x = -1;
 	b = -1;
 	a = 2.0 / WIDTH;
-	mlx_clear_window(utils->mlx_ptr, utils->mlx_win);
 	while (++x < WIDTH)
 	{
 		utils->ray_dir.x = utils->dir.x + utils->camera_plane.x * (a * x + b);
@@ -96,5 +99,6 @@ int	raycaster(t_utils *utils)
 		calc_distance_to_next_wall(utils);
 		draw_in_screen(utils, x);
 	}
+	mlx_put_image_to_window(utils->mlx_ptr, utils->mlx_win, utils->img, 0, 0);
 	return (0);
 }
