@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 00:46:06 by akarafi           #+#    #+#             */
-/*   Updated: 2022/05/18 20:26:13 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/05/19 00:14:28 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,34 +41,40 @@ static void	draw_vertical_line(t_utils *utils, int start, int end, int x)
 
 	i = -1;
 	while (++i <= start)
-		utils->screen.data[WIDTH * i + x] = 0x0f0f0f;
+		utils->screen.data[WIDTH * i + x] = (unsigned int)utils->screen.c;
 	while (i < end)
-		utils->screen.data[WIDTH * i++ + x] = utils->color;
+	{
+		utils->tex_y = (int)utils->tex_pos & (utils->texture->height - 1);
+		utils->screen.data[WIDTH * i++ + x] = utils->texture->data[\
+			utils->texture->height * utils->tex_y + utils->tex_x];
+		utils->tex_pos += utils->_step;
+	}
 	while (i < HEIGHT)
-		utils->screen.data[WIDTH * i++ + x] = 0xe3e3e3;
+		utils->screen.data[WIDTH * i++ + x] = (unsigned int)utils->screen.f;
 }
 
-static void	get_color(t_utils *utils)
+static void	get_texture_type(t_utils *utils)
 {
 	if (utils->side)
 	{
-		utils->color = 0xff0000; // NO
+		utils->texture = &utils->no;
 		if (utils->step.y == -1)
-			utils->color = 0x00ff00; // SO
+			utils->texture = &utils->so;
 	}
 	else
 	{
-		utils->color = 0x0000ff; // EA
+		utils->texture = &utils->ea;
 		if (utils->step.x == -1)
-			utils->color = 0xffff00; // WE
+			utils->texture = &utils->we;
 	}
 }
 
 static void	draw_in_screen(t_utils *utils, int x)
 {
-	int	line_height;
-	int	start;
-	int	end;
+	int		line_height;
+	double	wall_x;	
+	int		start;
+	int		end;
 
 	line_height = HEIGHT / (utils->dist.y - utils->new_dist.y);
 	if (utils->side == 0)
@@ -79,7 +85,16 @@ static void	draw_in_screen(t_utils *utils, int x)
 	end = line_height / 2 + HEIGHT / 2;
 	if (end >= HEIGHT)
 		end = HEIGHT - 1;
-	get_color(utils);
+	wall_x = utils->pos.x + \
+		(utils->dist.y - utils->new_dist.y) * utils->ray_dir.x;
+	if (utils->side == 0)
+		wall_x = utils->pos.y + \
+			(utils->dist.x - utils->new_dist.x) * utils->ray_dir.y;
+	wall_x -= (int)wall_x;
+	utils->tex_x = (int)(wall_x * (double)utils->texture->width);
+	utils->_step = (double) utils->texture->height / line_height;
+	utils->tex_pos = (start - HEIGHT / 2 + line_height / 2) * utils->_step; // prouf
+	get_texture_type(utils);
 	draw_vertical_line(utils, start, end, x);
 }
 

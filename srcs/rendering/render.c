@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 00:13:35 by akarafi           #+#    #+#             */
-/*   Updated: 2022/05/18 20:10:23 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/05/19 00:12:02 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,16 @@ static void	init_utils(t_utils *utils)
 		&utils->screen.bpp, &utils->screen.sl, &utils->screen.endian);
 }
 
+static void	init_colors(t_utils *utils)
+{
+	t_color	*c;
+
+	c = &utils->data->floor_color;
+	utils->screen.f = (c->r << 16) | (c->g << 8) | c->b;
+	c = &utils->data->ceil_color;
+	utils->screen.c = (c->r << 16) | (c->g << 8) | c->b;
+}
+
 void	render(t_data *data)
 {
 	t_utils	utils;
@@ -49,6 +59,7 @@ void	render(t_data *data)
 	utils.data = data;
 	init_utils(&utils);
 	load_textures(&utils);
+	init_colors(&utils);
 	mlx_loop_hook(utils.mlx_ptr, raycaster, &utils);
 	mlx_hook(utils.mlx_win, 2, 1L, event_listener, &utils);
 	mlx_hook(utils.mlx_win, 17, 1L, __exit, utils.data);

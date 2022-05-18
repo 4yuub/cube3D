@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 22:06:14 by akarafi           #+#    #+#             */
-/*   Updated: 2022/05/18 20:25:17 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/05/19 00:11:02 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,8 @@ typedef struct s_img
 	int		bpp;
 	int		sl;
 	int		endian;
+	int		c;
+	int		f;
 }	t_img;
 
 typedef struct s_utils
@@ -145,11 +147,16 @@ typedef struct s_utils
 	t_data		*data;
 	void		*mlx_ptr;
 	void		*mlx_win;
+	t_img		*texture;
 	t_img		no;
 	t_img		so;
 	t_img		ea;
 	t_img		we;
 	t_img		screen;
+	double		_step;
+	double		tex_pos;
+	int			tex_x;
+	int			tex_y;
 }	t_utils;
 
 void	render(t_data *data);
