@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 00:13:35 by akarafi           #+#    #+#             */
-/*   Updated: 2022/05/18 00:59:02 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/05/18 20:10:23 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,9 @@ static void	init_utils(t_utils *utils)
 							utils->dir.y * sin(-PI / 2)) * (1 / tan(PI / 3));
 	utils->camera_plane.y = (utils->dir.x * -sin(-PI / 2) + \
 							utils->dir.y * cos(-PI / 2)) * (1 / tan(PI / 3));
+	utils->screen.img = mlx_new_image(utils->mlx_ptr, WIDTH, HEIGHT);
+	utils->screen.data = (int *)mlx_get_data_addr(utils->screen.img, \
+		&utils->screen.bpp, &utils->screen.sl, &utils->screen.endian);
 }
 
 void	render(t_data *data)

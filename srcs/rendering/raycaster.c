@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 00:46:06 by akarafi           #+#    #+#             */
-/*   Updated: 2022/05/18 04:00:53 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/05/18 18:56:17 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ static void	draw_vertical_line(t_utils *utils, int start, int end, int x)
 
 	i = -1;
 	while (++i <= start)
-		utils->img_data[WIDTH * i + x] = 0x0f0f0f;
+		utils->screen.data[WIDTH * i + x] = 0x0f0f0f;
 	while (i < end)
-		utils->img_data[WIDTH * i++ + x] = utils->color;
+		utils->screen.data[WIDTH * i++ + x] = utils->color;
 	while (i < HEIGHT)
-		utils->img_data[WIDTH * i++ + x] = 0xe3e3e3;
+		utils->screen.data[WIDTH * i++ + x] = 0xe3e3e3;
 }
 
 static void	get_color(t_utils *utils)
@@ -99,6 +99,6 @@ int	raycaster(t_utils *utils)
 		calc_distance_to_next_wall(utils);
 		draw_in_screen(utils, x);
 	}
-	mlx_put_image_to_window(utils->mlx_ptr, utils->mlx_win, utils->img, 0, 0);
+	mlx_put_image_to_window(utils->mlx_ptr, utils->mlx_win, utils->screen.img, 0, 0);
 	return (0);
 }

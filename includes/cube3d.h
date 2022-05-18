@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 22:06:14 by akarafi           #+#    #+#             */
-/*   Updated: 2022/05/18 03:55:09 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/05/18 18:53:08 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,10 +104,8 @@ bool	_strcmp(char *start, char *end, char *str);
 
 // rendring
 # define PI 3.141592f
-# define WIDTH 640
-# define HEIGHT 480
-# define TEXTURE_WIDTH 512
-# define TEXTURE_HEIGHT 512
+# define WIDTH 1920
+# define HEIGHT 1080
 
 
 typedef struct s_vector
@@ -121,6 +119,18 @@ typedef struct s_vector_i
 	int	x;
 	int	y;
 }	t_vector_i;
+
+typedef struct s_img
+{
+	int		width;
+	int		height;
+	int		*data;
+	void	*img;
+	int		bpp;
+	int		sl;
+	int		endian;
+}	t_img;
+
 
 typedef struct s_utils
 {
@@ -141,8 +151,7 @@ typedef struct s_utils
 	void		*south_texture;
 	void		*west_texture;
 	void		*east_texture;
-	void		*img;
-	int			*img_data;
+	t_img		screen;
 }	t_utils;
 
 void	render(t_data *data);
