@@ -6,35 +6,31 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 00:57:49 by akarafi           #+#    #+#             */
-/*   Updated: 2022/05/18 18:55:22 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/05/18 20:29:45 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 #include "colors.h"
 
-void	load_textures(t_utils *utils)
+void	load_img(t_utils *utils, char *path, t_img *img)
 {
-	int	x;
-
-	utils->north_texture = mlx_xpm_file_to_image(utils->mlx_ptr, \
-		utils->data->north_texture, &x, &x);
-	utils->south_texture = mlx_xpm_file_to_image(utils->mlx_ptr, \
-		utils->data->south_texture, &x, &x);
-	utils->east_texture = mlx_xpm_file_to_image(utils->mlx_ptr, \
-		utils->data->east_texture, &x, &x);
-	utils->west_texture = mlx_xpm_file_to_image(utils->mlx_ptr, \
-		utils->data->west_texture, &x, &x);
-	if (!utils->north_texture || !utils->east_texture \
-			|| !utils->west_texture || !utils->south_texture)
+	img->img = mlx_xpm_file_to_image(utils->mlx_ptr, \
+							path, &img->width, &img->height);
+	if (!img->img)
 	{
-		printf("%sInvalid Texture file%s\n", RED, RESET);
+		printf("%sInvalid XPM File%s\n", RED, RESET);
 		free_data(utils->data);
 		exit(0);
 	}
-	utils->screen.img = mlx_new_image(utils->mlx_ptr, WIDTH, HEIGHT);
-	utils->screen.width = WIDTH;
-	utils->screen.height = HEIGHT;
-	utils->screen.data = (int *)mlx_get_data_addr(utils->screen.img, \
-			&utils->screen.bpp, &utils->screen.sl, &utils->screen.endian);
+	img->data = (int *) mlx_get_data_addr(img->img, \
+							&img->bpp, &img->sl, &img->endian);
+}
+
+void	load_textures(t_utils *utils)
+{
+	load_img(utils, utils->data->north_texture, &utils->no);
+	load_img(utils, utils->data->south_texture, &utils->so);
+	load_img(utils, utils->data->west_texture, &utils->we);
+	load_img(utils, utils->data->east_texture, &utils->ea);
 }

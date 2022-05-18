@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 22:06:14 by akarafi           #+#    #+#             */
-/*   Updated: 2022/05/18 18:53:08 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/05/18 20:25:17 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,6 @@ bool	_strcmp(char *start, char *end, char *str);
 # define WIDTH 1920
 # define HEIGHT 1080
 
-
 typedef struct s_vector
 {
 	double	x;
@@ -131,7 +130,6 @@ typedef struct s_img
 	int		endian;
 }	t_img;
 
-
 typedef struct s_utils
 {
 	t_vector	pos;
@@ -147,10 +145,10 @@ typedef struct s_utils
 	t_data		*data;
 	void		*mlx_ptr;
 	void		*mlx_win;
-	void		*north_texture;
-	void		*south_texture;
-	void		*west_texture;
-	void		*east_texture;
+	t_img		no;
+	t_img		so;
+	t_img		ea;
+	t_img		we;
 	t_img		screen;
 }	t_utils;
 
