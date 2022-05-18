@@ -1,7 +1,7 @@
-WE ./texture/masked.xpm
-EA ./texture/rolling_stones.xpm
-NO ./texture/rl_stones.xpm
-SO ./texture/yoda.xpm
+WE ./assets/WE.xpm
+EA ./assets/EA.xpm
+NO ./assets/NO.xpm
+SO ./assets/SO.xpm
 
 
 F 115,115,115

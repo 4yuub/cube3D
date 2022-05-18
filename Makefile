@@ -6,7 +6,7 @@ RM = rm -rf
 CC = cc
 
 PARSING = parse.c textures.c identify.c colors.c map.c map_validation.c map_validation_utils.c
-RENDERING = render.c event_listener.c raycaster.c dda_algo.c wasd.c
+RENDERING = render.c event_listener.c raycaster.c dda_algo.c wasd.c loading.c
 FREE = free_list.c free_data.c
 GNL = get_next_line.c get_next_line_utils.c
 

@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 22:06:14 by akarafi           #+#    #+#             */
-/*   Updated: 2022/05/17 18:07:48 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/05/18 01:20:25 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,9 @@ bool	_strcmp(char *start, char *end, char *str);
 # define PI 3.141592f
 # define WIDTH 640
 # define HEIGHT 480
+# define TEXTURE_WIDTH 512
+# define TEXTURE_HEIGHT 512
+
 
 typedef struct s_vector
 {
@@ -134,12 +137,18 @@ typedef struct s_utils
 	t_data		*data;
 	void		*mlx_ptr;
 	void		*mlx_win;
+	void		*north_texture;
+	void		*south_texture;
+	void		*west_texture;
+	void		*east_texture;
+	int			screen_buffer[HEIGHT][WIDTH];
 }	t_utils;
 
 void	render(t_data *data);
 int		event_listener(int key, t_utils *utils);
 int		raycaster(t_utils *utils);
 void	dda_algorithm(t_utils *utils);
+void	load_textures(t_utils *utils);
 
 // end rendring
 

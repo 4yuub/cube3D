@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 00:13:35 by akarafi           #+#    #+#             */
-/*   Updated: 2022/05/17 17:45:27 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/05/18 00:59:02 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	render(t_data *data)
 
 	utils.data = data;
 	init_utils(&utils);
+	load_textures(&utils);
 	mlx_loop_hook(utils.mlx_ptr, raycaster, &utils);
 	mlx_hook(utils.mlx_win, 2, 1L, event_listener, &utils);
 	mlx_hook(utils.mlx_win, 17, 1L, __exit, utils.data);
