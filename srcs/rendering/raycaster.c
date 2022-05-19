@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 00:46:06 by akarafi           #+#    #+#             */
-/*   Updated: 2022/05/19 00:14:28 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/05/19 01:37:48 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,16 @@ static void	draw_vertical_line(t_utils *utils, int start, int end, int x)
 {
 	int	i;
 
+	if (start < 0)
+		start = 0;
+	if (end >= HEIGHT)
+		end = HEIGHT - 1;
 	i = -1;
 	while (++i <= start)
 		utils->screen.data[WIDTH * i + x] = (unsigned int)utils->screen.c;
 	while (i < end)
 	{
-		utils->tex_y = (int)utils->tex_pos & (utils->texture->height - 1);
+		utils->tex_y = (int)utils->tex_pos;
 		utils->screen.data[WIDTH * i++ + x] = utils->texture->data[\
 			utils->texture->height * utils->tex_y + utils->tex_x];
 		utils->tex_pos += utils->_step;
@@ -80,11 +84,7 @@ static void	draw_in_screen(t_utils *utils, int x)
 	if (utils->side == 0)
 		line_height = HEIGHT / (utils->dist.x - utils->new_dist.x);
 	start = -line_height / 2 + HEIGHT / 2;
-	if (start < 0)
-		start = 0;
 	end = line_height / 2 + HEIGHT / 2;
-	if (end >= HEIGHT)
-		end = HEIGHT - 1;
 	wall_x = utils->pos.x + \
 		(utils->dist.y - utils->new_dist.y) * utils->ray_dir.x;
 	if (utils->side == 0)
@@ -93,7 +93,9 @@ static void	draw_in_screen(t_utils *utils, int x)
 	wall_x -= (int)wall_x;
 	utils->tex_x = (int)(wall_x * (double)utils->texture->width);
 	utils->_step = (double) utils->texture->height / line_height;
-	utils->tex_pos = (start - HEIGHT / 2 + line_height / 2) * utils->_step; // prouf
+	utils->tex_pos = abs(line_height / 2 - HEIGHT / 2) * utils->_step;
+	if (line_height < HEIGHT)
+		utils->tex_pos = 0;
 	get_texture_type(utils);
 	draw_vertical_line(utils, start, end, x);
 }
