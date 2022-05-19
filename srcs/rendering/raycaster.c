@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 00:46:06 by akarafi           #+#    #+#             */
-/*   Updated: 2022/05/19 03:09:32 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/05/19 06:20:54 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,10 @@ static void	draw_vertical_line(t_utils *utils, int start, int end, int x)
 		utils->screen.data[WIDTH * i + x] = (unsigned int)utils->screen.c;
 	while (i < end)
 	{
-		utils->tex_y = (int)utils->tex_pos % (HEIGHT);
+		utils->tex_y = (int)utils->tex_pos % utils->texture->height;
+		utils->tex_x = utils->tex_x % utils->texture->width;
 		utils->screen.data[WIDTH * i++ + x] = utils->texture->data[\
-			utils->texture->width * utils->tex_y + utils->tex_x % (WIDTH)];
+			utils->texture->width * utils->tex_y + utils->tex_x];
 		utils->tex_pos += utils->_step;
 	}
 	while (i < HEIGHT)
@@ -91,12 +92,12 @@ static void	draw_in_screen(t_utils *utils, int x)
 		wall_x = utils->pos.y + \
 			(utils->dist.x - utils->new_dist.x) * utils->ray_dir.y;
 	wall_x -= (int)wall_x;
+	get_texture_type(utils);
 	utils->tex_x = (int)(wall_x * (double)utils->texture->width);
 	utils->_step = (double) utils->texture->height / line_height;
 	utils->tex_pos = abs(line_height / 2 - HEIGHT / 2) * utils->_step;
 	if (line_height < HEIGHT)
 		utils->tex_pos = 0;
-	get_texture_type(utils);
 	draw_vertical_line(utils, start, end, x);
 }
 
