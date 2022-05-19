@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 00:35:20 by akarafi           #+#    #+#             */
-/*   Updated: 2022/05/17 23:01:32 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/05/19 06:34:56 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,10 @@ void	move_up(t_utils *utils);
 void	move_left(t_utils *utils);
 void	move_right(t_utils *utils);
 
-int	__exit(t_data *data)
+int	__exit(t_utils *utils)
 {
-	free_data(data);
+	free_data(utils->data);
+	free(utils);
 	exit(0);
 	return (0);
 }
@@ -44,7 +45,7 @@ static void	rotate(t_utils *utils, double angel)
 int	event_listener(int key, t_utils *utils)
 {
 	if (key == KEY_ESC)
-		__exit(utils->data);
+		__exit(utils);
 	if (key == KEY_AR_L)
 		rotate(utils, 0.15);
 	else if (key == KEY_A)

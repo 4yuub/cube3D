@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 00:13:35 by akarafi           #+#    #+#             */
-/*   Updated: 2022/05/19 03:04:41 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/05/20 00:30:29 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,24 @@ static void	init_colors(t_utils *utils)
 
 void	render(t_data *data)
 {
-	t_utils	utils;
+	t_utils	*utils;
 
-	utils.data = data;
-	init_utils(&utils);
-	load_textures(&utils);
-	init_colors(&utils);
-	mlx_loop_hook(utils.mlx_ptr, raycaster, &utils);
-	mlx_hook(utils.mlx_win, 2, 1L, event_listener, &utils);
-	mlx_hook(utils.mlx_win, 17, 1L, __exit, utils.data);
-	mlx_loop(utils.mlx_ptr);
+	utils = malloc(sizeof(t_utils));
+	if (!utils)
+	{
+		printf("An error have been occured: Allcoation Error");
+		free_data(data);
+		exit(0);
+	}
+	utils->data = data;
+	init_utils(utils);
+	utils->minimap.img = mlx_new_image(utils->mlx_ptr, MINI_WIDTH, MINI_HEIGHT);
+	utils->minimap.data = (int *)mlx_get_data_addr(utils->minimap.img, \
+		&utils->minimap.bpp, &utils->minimap.sl, &utils->minimap.endian);
+	load_textures(utils);
+	init_colors(utils);
+	mlx_loop_hook(utils->mlx_ptr, raycaster, utils);
+	mlx_hook(utils->mlx_win, 2, 1L, event_listener, utils);
+	mlx_hook(utils->mlx_win, 17, 1L, __exit, utils->data);
+	mlx_loop(utils->mlx_ptr);
 }
