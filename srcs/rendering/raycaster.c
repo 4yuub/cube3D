@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ahimmi <ahimmi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 00:46:06 by akarafi           #+#    #+#             */
-/*   Updated: 2022/05/19 01:37:48 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/05/19 02:34:41 by ahimmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ static void	draw_vertical_line(t_utils *utils, int start, int end, int x)
 		utils->screen.data[WIDTH * i + x] = (unsigned int)utils->screen.c;
 	while (i < end)
 	{
-		utils->tex_y = (int)utils->tex_pos;
+		utils->tex_y = (int)utils->tex_pos % (HEIGHT);
 		utils->screen.data[WIDTH * i++ + x] = utils->texture->data[\
-			utils->texture->height * utils->tex_y + utils->tex_x];
+			utils->texture->width * utils->tex_y + utils->tex_x];
 		utils->tex_pos += utils->_step;
 	}
 	while (i < HEIGHT)
