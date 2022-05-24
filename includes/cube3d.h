@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 22:06:14 by akarafi           #+#    #+#             */
-/*   Updated: 2022/05/20 00:29:32 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/05/25 00:29:16 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,10 @@
 // end directions && ids
 
 // map objs
-# define EMPTY 0U
-# define WALL  1U
-# define SPACE 2U
+# define EMPTY  0U
+# define WALL   1U
+# define SPACE  2U
+# define PLAYER 4U
 // end map objs
 
 // parsing:
