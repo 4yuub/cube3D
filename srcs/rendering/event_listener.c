@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 00:35:20 by akarafi           #+#    #+#             */
-/*   Updated: 2022/05/19 06:34:56 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/05/25 01:15:48 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,18 @@ static void	rotate(t_utils *utils, double angel)
 										utils->camera_plane.y * cos(angel);
 	utils->camera_plane.x = x_prime;
 	utils->camera_plane.y = y_prime;
+}
+
+int	mouse_event(int x, int y, t_utils *uitils)
+{
+	if (x >= WIDTH || x <= 0 || y >= HEIGHT || y <= 0)
+		return (0);
+	if (x - uitils->old_mouse < 5 && x - uitils->old_mouse > 0)
+		rotate(uitils, -.07);
+	else if (x - uitils->old_mouse < 5 && x - uitils->old_mouse < 0)
+		rotate(uitils, .07);
+	uitils->old_mouse = x;
+	return (0);
 }
 
 int	event_listener(int key, t_utils *utils)

@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 00:13:35 by akarafi           #+#    #+#             */
-/*   Updated: 2022/05/20 00:30:29 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/05/25 01:09:36 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,10 @@ void	render(t_data *data)
 		&utils->minimap.bpp, &utils->minimap.sl, &utils->minimap.endian);
 	load_textures(utils);
 	init_colors(utils);
+	utils->old_mouse = -1;
 	mlx_loop_hook(utils->mlx_ptr, raycaster, utils);
 	mlx_hook(utils->mlx_win, 2, 1L, event_listener, utils);
+	mlx_hook(utils->mlx_win, 6, 1L, mouse_event, utils);
 	mlx_hook(utils->mlx_win, 17, 1L, __exit, utils->data);
 	mlx_loop(utils->mlx_ptr);
 }

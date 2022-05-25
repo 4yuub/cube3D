@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 22:06:14 by akarafi           #+#    #+#             */
-/*   Updated: 2022/05/25 00:29:16 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/05/25 01:09:03 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,6 +161,7 @@ typedef struct s_utils
 	double		tex_pos;
 	int			tex_x;
 	int			tex_y;
+	int			old_mouse;
 }	t_utils;
 
 void	render(t_data *data);
@@ -169,7 +170,7 @@ int		raycaster(t_utils *utils);
 void	dda_algorithm(t_utils *utils);
 void	load_textures(t_utils *utils);
 void	draw_minimap(t_utils *utils);
-
+int		mouse_event(int x, int y, t_utils *uitils);
 // end rendring
 
 // key macros
