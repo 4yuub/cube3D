@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 00:35:20 by akarafi           #+#    #+#             */
-/*   Updated: 2022/05/25 01:15:48 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/05/26 02:43:25 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ int	mouse_event(int x, int y, t_utils *uitils)
 {
 	if (x >= WIDTH || x <= 0 || y >= HEIGHT || y <= 0)
 		return (0);
-	if (x - uitils->old_mouse < 5 && x - uitils->old_mouse > 0)
-		rotate(uitils, -.07);
-	else if (x - uitils->old_mouse < 5 && x - uitils->old_mouse < 0)
+	if (x < uitils->old_mouse && uitils->old_mouse - x < 10)
 		rotate(uitils, .07);
+	else if (uitils->old_mouse < x && x - uitils->old_mouse < 10)
+		rotate(uitils, -.07);
 	uitils->old_mouse = x;
 	return (0);
 }
