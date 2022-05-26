@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 22:06:14 by akarafi           #+#    #+#             */
-/*   Updated: 2022/05/26 02:55:20 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/05/26 05:13:47 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,8 +106,8 @@ bool	_strcmp(char *start, char *end, char *str);
 
 // rendring
 # define PI 3.141592f
-# define WIDTH 1920
-# define HEIGHT 1080
+# define WIDTH 1024
+# define HEIGHT 720
 # define MINI_WIDTH 384
 # define MINI_HEIGHT 216
 
@@ -165,6 +165,7 @@ typedef struct s_utils
 	int			tex_y;
 	int			old_mouse;
 	bool		door;
+	t_img		torch[23];
 }	t_utils;
 
 void	render(t_data *data);
@@ -174,6 +175,7 @@ void	dda_algorithm(t_utils *utils);
 void	load_textures(t_utils *utils);
 void	draw_minimap(t_utils *utils);
 int		mouse_event(int x, int y, t_utils *uitils);
+void	load_torch(t_utils *utils);
 // end rendring
 
 // key macros

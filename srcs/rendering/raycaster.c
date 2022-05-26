@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 00:46:06 by akarafi           #+#    #+#             */
-/*   Updated: 2022/05/26 03:45:14 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/05/26 05:16:42 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,9 +110,10 @@ static void	draw_in_screen(t_utils *utils, int x)
 
 int	raycaster(t_utils *utils)
 {
-	int		x;
-	double	a;
-	double	b;
+	int			x;
+	double		a;
+	double		b;
+	static int	i;
 
 	x = -1;
 	b = -1;
@@ -129,5 +130,8 @@ int	raycaster(t_utils *utils)
 											utils->screen.img, 0, 0);
 	mlx_put_image_to_window(utils->mlx_ptr, utils->mlx_win, \
 											utils->minimap.img, 10, 10);
-	return (0);
+	mlx_put_image_to_window(utils->mlx_ptr, utils->mlx_win, \
+								utils->torch[i % 23].img, 0, \
+								HEIGHT - utils->torch[i % 23].height);
+	return (i++, 0);
 }
