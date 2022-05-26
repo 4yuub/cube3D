@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 06:42:18 by akarafi           #+#    #+#             */
-/*   Updated: 2022/05/26 02:47:13 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/05/26 03:14:38 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ void	draw_minimap(t_utils *utils)
 				utils->minimap.data[i * MINI_WIDTH + j] = 0x00ff00U;
 			else if (c == SPACE || c == EMPTY)
 				utils->minimap.data[i * MINI_WIDTH + j] = 0xffffffffU;
+			else if (c == DOOR)
+				utils->minimap.data[i * MINI_WIDTH + j] = 0x44e3e3e3U;
 			else
 				utils->minimap.data[i * MINI_WIDTH + j] = 0x44000000U;
 		}

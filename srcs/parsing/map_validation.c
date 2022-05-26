@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 06:31:49 by ayoub             #+#    #+#             */
-/*   Updated: 2022/05/16 01:43:48 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/05/26 03:00:37 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ bool	first_and_last(t_data *data);
 
 static bool	is_valid_member(int8_t c)
 {
-	return (c == SPACE || c == WALL || c == EMPTY
+	return (c == SPACE || c == WALL || c == EMPTY || c == DOOR
 		|| c == 'N' || c == 'S' || c == 'E' || c == 'W');
 }
 

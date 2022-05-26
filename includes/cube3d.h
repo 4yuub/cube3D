@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/03 22:06:14 by akarafi           #+#    #+#             */
-/*   Updated: 2022/05/25 01:09:03 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/05/26 02:55:20 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@
 # define WALL   1U
 # define SPACE  2U
 # define PLAYER 4U
+# define DOOR   8U
 // end map objs
 
 // parsing:
@@ -155,6 +156,7 @@ typedef struct s_utils
 	t_img		so;
 	t_img		ea;
 	t_img		we;
+	t_img		door_texture;
 	t_img		screen;
 	t_img		minimap;
 	double		_step;
@@ -162,6 +164,7 @@ typedef struct s_utils
 	int			tex_x;
 	int			tex_y;
 	int			old_mouse;
+	bool		door;
 }	t_utils;
 
 void	render(t_data *data);

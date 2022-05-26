@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 00:46:06 by akarafi           #+#    #+#             */
-/*   Updated: 2022/05/25 00:26:52 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/05/26 02:57:40 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,9 @@ static void	draw_vertical_line(t_utils *utils, int start, int end, int x)
 
 static void	get_texture_type(t_utils *utils)
 {
-	if (utils->side)
+	if (utils->door)
+		utils->texture = &utils->door_texture;
+	else if (utils->side)
 	{
 		utils->texture = &utils->no;
 		if (utils->step.y == -1)

@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 01:27:11 by ayoub             #+#    #+#             */
-/*   Updated: 2022/05/07 16:46:35 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/05/26 03:00:17 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ static void	fill_map(t_data *data, t_list *lst)
 				data->map[i][j] = WALL;
 			else if (lst->content[j] == '0')
 				data->map[i][j] = EMPTY;
+			else if (lst->content[j] == 'D')
+				data->map[i][j] = DOOR;
 			else if (lst->content[j] == ' ')
 				;
 			else

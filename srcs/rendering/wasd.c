@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/17 22:57:47 by akarafi           #+#    #+#             */
-/*   Updated: 2022/05/17 23:27:51 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/05/26 03:02:19 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	move_up(t_utils *utils)
 
 	x_prime = utils->pos.x + utils->dir.x * .15;
 	y_prime = utils->pos.y + utils->dir.y * .15;
-	if (utils->data->map[(int)y_prime][(int)x_prime] == EMPTY)
+	if (utils->data->map[(int)y_prime][(int)x_prime] != WALL)
 	{
 		utils->pos.x = x_prime;
 		utils->pos.y = y_prime;
@@ -33,7 +33,7 @@ void	move_down(t_utils *utils)
 
 	x_prime = utils->pos.x - utils->dir.x * .15;
 	y_prime = utils->pos.y - utils->dir.y * .15;
-	if (utils->data->map[(int)y_prime][(int)x_prime] == EMPTY)
+	if (utils->data->map[(int)y_prime][(int)x_prime] != WALL)
 	{
 		utils->pos.x = x_prime;
 		utils->pos.y = y_prime;

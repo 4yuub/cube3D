@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/18 00:57:49 by akarafi           #+#    #+#             */
-/*   Updated: 2022/05/18 20:32:47 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/05/26 02:55:27 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,5 @@ void	load_textures(t_utils *utils)
 	load_img(utils, utils->data->south_texture, &utils->so);
 	load_img(utils, utils->data->west_texture, &utils->we);
 	load_img(utils, utils->data->east_texture, &utils->ea);
+	load_img(utils, "./assets/door.xpm", &utils->door_texture);
 }
