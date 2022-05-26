@@ -6,7 +6,7 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 00:46:06 by akarafi           #+#    #+#             */
-/*   Updated: 2022/05/26 02:57:40 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/05/26 03:45:14 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,12 @@ static void	calc_distance_to_next_wall(t_utils *utils)
 static void	draw_vertical_line(t_utils *utils, int start, int end, int x)
 {
 	int	i;
+	int	n;
 
+	n = 1;
+	if ((utils->side == 0 && utils->dist.x > 5) \
+			|| (utils->side == 1 && utils->dist.y > 5))
+		n = 4;
 	if (start < 0)
 		start = 0;
 	if (end >= HEIGHT)
@@ -51,7 +56,7 @@ static void	draw_vertical_line(t_utils *utils, int start, int end, int x)
 		utils->tex_y = (int)utils->tex_pos % utils->texture->height;
 		utils->tex_x = utils->tex_x % utils->texture->width;
 		utils->screen.data[WIDTH * i++ + x] = utils->texture->data[\
-			utils->texture->width * utils->tex_y + utils->tex_x];
+			utils->texture->width * utils->tex_y + utils->tex_x] / n;
 		utils->tex_pos += utils->_step;
 	}
 	while (i < HEIGHT)
