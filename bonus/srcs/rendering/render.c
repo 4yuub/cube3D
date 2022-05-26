@@ -6,13 +6,13 @@
 /*   By: akarafi <akarafi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/16 00:13:35 by akarafi           #+#    #+#             */
-/*   Updated: 2022/05/26 05:01:44 by akarafi          ###   ########.fr       */
+/*   Updated: 2022/05/26 05:58:55 by akarafi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-int	__exit(t_data *data);
+int	__exit(t_utils *data);
 
 static void	init_utils(t_utils *utils)
 {
@@ -75,6 +75,6 @@ void	render(t_data *data)
 	mlx_loop_hook(utils->mlx_ptr, raycaster, utils);
 	mlx_hook(utils->mlx_win, 2, 1L, event_listener, utils);
 	mlx_hook(utils->mlx_win, 6, 1L, mouse_event, utils);
-	mlx_hook(utils->mlx_win, 17, 1L, __exit, utils->data);
+	mlx_hook(utils->mlx_win, 17, 1L, __exit, utils);
 	mlx_loop(utils->mlx_ptr);
 }

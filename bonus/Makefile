@@ -1,4 +1,4 @@
-NAME = cube3D
+NAME = cub3D
 INC = includes
 CFLAGS = -Wall -Wextra -Werror
 MLX = -lmlx -framework OpenGL -framework AppKit -Ofast -march=native -ffast-math
@@ -24,7 +24,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT)
 	@$(CC) $(CFLAGS) $(MLX) $(OBJS) -o $(NAME)
-	@echo "cube3D created"
+	@echo "cub3D created"
 
 %.o:%.c $(INC)/cube3d.h
 	@$(CC) $(CFLAGS) -c $< -o $@ -I $(INC)

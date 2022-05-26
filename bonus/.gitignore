@@ -2,7 +2,7 @@
 *.o
 
 # executable
-cube3D
+cub3D
 
 # vscode settings
 .vscode
