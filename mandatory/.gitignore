@@ -1,0 +1,11 @@
+# object files:
+*.o
+
+# executable
+cube3D
+
+# vscode settings
+.vscode
+
+# valgrind
+*.dSYM
