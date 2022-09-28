@@ -132,6 +132,7 @@ int	raycaster(t_utils *utils)
 											utils->minimap.img, 10, 10);
 	mlx_put_image_to_window(utils->mlx_ptr, utils->mlx_win, \
 								utils->torch[i % 23].img, 0, \
-								HEIGHT - utils->torch[i % 23].height);
-	return (i++, 0);
+								HEIGHT - utils->torch[i].height);
+	i = (i + 1) % 23;
+	return (0);
 }
